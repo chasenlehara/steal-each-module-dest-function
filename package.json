@@ -1,0 +1,70 @@
+{
+  "name": "steal-each-module-dest-function",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chasenlehara/steal-each-module-dest-function.git"
+  },
+  "author": {
+    "name": "Chasen Le Hara",
+    "email": "chasen@chasenlehara.com",
+    "url": "http://www.chasenlehara.com/"
+  },
+  "scripts": {
+    "preversion": "npm run build",
+    "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
+    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "jshint": "jshint ./*.js ./src/ --config",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "build": "node build.js",
+    "document": "documentjs",
+    "develop": "done-serve --static --develop --port 8080"
+  },
+  "main": "dist/cjs/steal-each-module-dest-function",
+  "browser": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "keywords": [],
+  "system": {
+    "main": "steal-each-module-dest-function",
+    "configDependencies": [
+      "live-reload"
+    ],
+    "npmIgnore": [
+      "documentjs",
+      "generator-donejs",
+      "donejs-cli",
+      "steal-tools"
+    ],
+    "directories": {
+      "lib": "src"
+    },
+    "npmAlgorithm": "flat"
+  },
+  "dependencies": {
+    "can": "^2.3.16",
+    "jquery": "~2.2.1"
+  },
+  "devDependencies": {
+    "documentjs": "^0.4.2",
+    "jshint": "^2.9.1",
+    "cssify": "^0.6.0",
+    "steal": "^0.16.0",
+    "steal-qunit": "^0.1.1",
+    "steal-tools": "^0.16.0",
+    "generator-donejs": "^0.9.0",
+    "donejs-cli": "^0.9.4",
+    "done-serve": "^0.2.0"
+  }
+}
